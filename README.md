@@ -5,3 +5,4 @@
 * Temperature Change: https://data.neonscience.org/data-products/DP2.00024.001
 * CO2 Concentration Rate of Change: https://data.neonscience.org/data-products/DP2.00008.001
 * Python NEON Utilities: https://gitlab.com/esrh/py-neonutils/-/tree/pypi
+* Ticks: https://data.neonscience.org/data-products/DP1.10093.001
