@@ -7,3 +7,9 @@
 * Python NEON Utilities: https://gitlab.com/esrh/py-neonutils/-/tree/pypi
 * Ticks: https://data.neonscience.org/data-products/DP1.10093.001
 * NEON documentation: https://cran.r-project.org/web/packages/neonUtilities/neonUtilities.pdf
+
+* Graph 1: Relative Humidity vs Tick Population (Line graph)
+* Graph 2: Barometric Pressure vs Tick Population (Line graph)
+* Graph 3: Precipiation vs Tick Population (Line graph)
+* Graph 4: Temperature Change vs Tick Population (Line graph)
+* Graph 5: Correlation Coefficients vs Relative Humiditiy, Barometric Pressure, Precipitation, Temperature Change (Bar Graph)
