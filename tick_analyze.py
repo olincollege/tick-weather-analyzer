@@ -3,9 +3,10 @@ def tick_analyze(data):
     Isolate and process only necessary tick data
     
     Args:
-
+        data: ****TBD****
     Returns:
-
+        - necessary_data: a 2D array with the second column as the total amount of tick
+        for a month and the first column as the month and year the data is collected
     """
     for row in data:
         dates = row['collectDate']
@@ -18,3 +19,4 @@ def tick_analyze(data):
             if i != 0:
                 necessary_data += [dates[i-1], total_amount]
             total_amount = 0
+    return necessary_data
