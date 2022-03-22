@@ -8,6 +8,7 @@ import pandas as pd
 NAME_OF_DESIRED_FILE = {
     "ticks": "taxonomyProcessed",
     "relative humidity": "060.030.RH_30min",
+    "precipitation": "900.000.030.PRIPRE_30min"
 }
 
 
