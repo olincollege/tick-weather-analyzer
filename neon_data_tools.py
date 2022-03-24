@@ -35,7 +35,7 @@ def get_data_urls(dpID, site, date, package="basic"):
     neon_data_json = neon_data.json()
     urls = [neon_data_json["data"]["files"][i]["url"] for i in range(len(neon_data_json["data"]["files"]))]
     names = [neon_data_json["data"]["files"][i]["name"][28:] for i in range(len(neon_data_json["data"]["files"]))]
-    # print(names)
+    # print(names, urls)
     return urls, names
 
 
