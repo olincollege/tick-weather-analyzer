@@ -20,9 +20,8 @@ precipitation_analyze_cases = [
 ]
 
 tick_analyze_cases = [
-
+    
 ]
-
 
 
 # Define standard testing functions to check functions' outputs given certain
