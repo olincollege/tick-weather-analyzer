@@ -16,12 +16,12 @@ def plot_line_of_best_fit(independent_data, tick_data):
 
 def plot_correlation_coefficients(datasets, independent_datasets, tick_data):
     r_values = np.array([])
-    x = np.arrange(3)
+    x = np.arange(3)
     bar_width = 0.35
     for dataset in independent_datasets:
         slope, intercept, r_value, p_value, standard_error = perform_linear_regression(dataset, tick_data)
-        r_values.append(r_value)
-    plt.bar(x + bar_width, r_values)
+        np.append(r_values, r_value)
+    plt.bar(x + bar_width, r_values, bar_width)
 
 def plot_line_chart(x, y, value):
     plt.plot(x, y)
