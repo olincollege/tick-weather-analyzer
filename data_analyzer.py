@@ -51,7 +51,7 @@ def precipitation_analyze(data):
     #Return array with the month and average precipitation for each month
     return precipitation
 
-def tick_process(data):
+def tick_analyze(data):
     """
     Isolate and process only necessary tick data
     
