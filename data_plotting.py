@@ -13,15 +13,19 @@ def plot_line_of_best_fit(independent_data, tick_data):
     plt.scatter(independent_data, tick_data)
     plt.plot(independent_data, slope * independent_data + intercept)
     plt.text(1, max(tick_data) - 1, 'y = ' + '{:.2f}'.format(intercept) + ' + {:.2f}'.format(slope) + 'x', size=12)
+    plt.show()
 
 def plot_correlation_coefficients(datasets, independent_datasets, tick_data):
-    r_values = np.array([])
-    x = np.arange(3)
+    correlations = {}
     bar_width = 0.35
-    for dataset in independent_datasets:
-        slope, intercept, r_value, p_value, standard_error = perform_linear_regression(dataset, tick_data)
-        np.append(r_values, r_value)
-    plt.bar(x + bar_width, r_values, bar_width)
+    for index, data in enumerate(independent_datasets):
+        slope, intercept, r_value, p_value, standard_error = perform_linear_regression(data, tick_data)
+        correlations[datasets[index]] = r_value
+    plt.bar(datasets, list(correlations.values()), bar_width)
+    plt.xlabel("Dataset")
+    plt.ylabel("Correlation Coefficient")
+    plt.title("Correlation Coefficients of Datasets and Tick Population")
+    plt.show()
 
 def plot_line_chart(x, y, value):
     plt.plot(x, y)
