@@ -13,13 +13,14 @@ def tick_process(data):
     # for row in data.columns:
     #     dates = row[4]
     #     amounts = row[14]
-    necessary_data = [['month'],['total_ticks']]
+    
+    necessary_data = [[],[]]
     for i in range(len(dates)):
         if dates[i][:7] == dates[i-1][:7]:
             total_amount += amounts[i]
         elif dates[i][:7] != dates[i-1][:7]:
             if i != 0:
-                new_data = [dates[i-1][:7], total_amount]
-                necessary_data += new_data
+                necessary_data[0].append(dates[i-1][:7])
+                necessary_data[1].append(total_amount)
             total_amount = 0
     return necessary_data
