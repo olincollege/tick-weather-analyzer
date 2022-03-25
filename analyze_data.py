@@ -21,5 +21,11 @@ def plot_correlation_coefficients(datasets, independent_datasets, tick_data):
     for dataset in independent_datasets:
         slope, intercept, r_value, p_value, standard_error = perform_linear_regression(dataset, tick_data)
         r_values.append(r_value)
-    plt.bar(X + bar_width, r_values)
+    plt.bar(x + bar_width, r_values)
 
+def plot_line_chart(x, y, value):
+    plt.plot(x, y)
+    plt.title(f'{value} data over time')
+    plt.xlabel('Date')
+    plt.ylabel(f'{value}')
+    plt.show()
