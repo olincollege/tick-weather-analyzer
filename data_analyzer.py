@@ -56,20 +56,20 @@ def tick_analyze(data):
     Isolate and process only necessary tick data
     
     Args:
-        data: a list containing the stacked dataframe of all the information
+        data: Ticks dataframe, downloaded from neon_data_tools
     Returns:
         necessary_data: a 2D array with the second row as the total amount of tick
         for a month and the first row as the month and year the data is collected
     """
     # Collect dates and tick data from the dataframe containing ticks data (data[0])
-    dates = data[0].loc[:,"collectDate"].values.tolist()
-    amounts = data[0].loc[:,"individualCount"].values.tolist()
+    dates = data.loc[:,"collectDate"].values.tolist()
+    amounts = data.loc[:,"individualCount"].values.tolist()
     
     # Initialize return list
     necessary_data = [[],[]]
 
     # Loop through data
-    for i in enumerate(dates):
+    for i in range(len(dates)):
         # Combine ticks data from the same month
         if dates[i][:7] == dates[i-1][:7]:
             total_amount += amounts[i]
