@@ -1,4 +1,4 @@
-# weather-pattern-analyzer
+# tick-weather-analyzer
 * Precipitation: https://data.neonscience.org/data-products/DP1.00006.001
 * Relative Humidity: https://data.neonscience.org/data-products/DP1.00098.001
 * Barometric Pressure: https://data.neonscience.org/data-products/DP1.00004.001
