@@ -35,7 +35,6 @@ def get_data_urls(dpID, site, date, package="basic"):
     neon_data_json = neon_data.json()
     urls = [neon_data_json["data"]["files"][i]["url"] for i in range(len(neon_data_json["data"]["files"]))]
     names = [neon_data_json["data"]["files"][i]["name"][28:] for i in range(len(neon_data_json["data"]["files"]))]
-    # print(names, urls)
     return urls, names
 
 
@@ -62,12 +61,10 @@ def download_data(dataset, dpID, site, date, package="basic"):
         os.makedirs(new_path)
     # get the urls and names of the files pertaining to the dataset  
     urls, names = get_data_urls(dpID, site, date, package)
-    # print(names)
 
     # get the index of the file name that contains the substrng that 
     # identifies it as a desired file
     desired_index = [index for index, name in enumerate(names) if NAME_OF_DESIRED_FILE[dataset] in name][0]
-    # print(desired_index)
     requested_file = requests.get(urls[desired_index], allow_redirects=True)
 
     # save the data into a new file
