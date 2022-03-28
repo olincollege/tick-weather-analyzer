@@ -16,12 +16,14 @@ def perform_linear_regression(independent_data, tick_data):
         tick_data: A numpy array of the total number of ticks per month.
     
     Returns:
-        Floats representing the slope, intercept, Pearson correlation coefficient,
-        p-value, and standard error of the slope of the linear relationship between
-        the data.
+        Floats representing the slope, intercept, and Pearson correlation coefficient 
+        of the linear relationship between the data.
     """
     slope, intercept, r_value, p_value, standard_error = stats.linregress(independent_data, tick_data)
-    return slope, intercept, r_value, p_value, standard_error
+    slope = round(slope, 4)
+    intercept = round(intercept, 4)
+    r_value = round(r_value, 4)
+    return slope, intercept, r_value
 
 def plot_line_of_best_fit(independent_data, tick_data):
     """
@@ -36,7 +38,7 @@ def plot_line_of_best_fit(independent_data, tick_data):
         tick_data: A numpy array of the total number of ticks per month.
     
     """
-    slope, intercept, r_value, p_value, standard_error = perform_linear_regression(independent_data, tick_data)
+    slope, intercept, r_value = perform_linear_regression(independent_data, tick_data)
     plt.scatter(independent_data, tick_data)
     plt.plot(independent_data, slope * independent_data + intercept)
     plt.text(min(independent_data) + 1, max(tick_data) - 0.3, 'y = ' + '{:.2f}'.format(intercept) + ' + {:.2f}'.format(slope) + 'x', size=12)
@@ -86,7 +88,7 @@ def get_correlation_coefficients(datasets, independent_datasets, dependendent_da
     """
     correlations = {}
     for index, data in enumerate(independent_datasets):
-        slope, intercept, r_value, p_value, standard_error = perform_linear_regression(data, dependendent_dataset)
+        slope, intercept, r_value  = perform_linear_regression(data, dependendent_dataset)
         correlations[datasets[index]] = r_value
     return correlations
 
@@ -106,15 +108,3 @@ def plot_line_chart(time, dependent_data, value):
     plt.xlabel('Date')
     plt.ylabel(f'{value}')
     plt.show()
-
-def data_to_array(data_series):
-    """
-    Convert the series into a numpy array.
-    
-    Args:
-        data_series: A pandas series with the desired data.
-    
-    Returns:
-        A numpy array of the given data.
-    """
-    return np.array(data_series)
