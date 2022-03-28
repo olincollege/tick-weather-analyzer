@@ -104,14 +104,14 @@ def plot_line_chart(time, dependent_data, value):
     plt.ylabel(f'{value}')
     plt.show()
 
-def data_to_array(dataframe):
+def data_to_array(data_series):
     """
-    Convert the dataframe into a numpy array.
+    Convert the series into a numpy array.
     
     Args:
-        dataframe: A pandas dataframe with the desired data.
+        data_series: A pandas series with the desired data.
     
     Returns:
         A numpy array of the given data.
     """
-    return np.array(dataframe)
+    return np.array(data_series)
