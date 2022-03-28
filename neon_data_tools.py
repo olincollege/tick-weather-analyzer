@@ -129,6 +129,7 @@ def create_stacked_dataframe(file_paths):
     Returns:
         A dataframe of the combines data for the dataset.
     """
+    print(file_paths)
     return pd.concat(map(pd.read_csv, [file_path for file_path in file_paths]), ignore_index = True)
 
 

@@ -2,7 +2,7 @@
 Process necessary data from dataframes pulled from the National Ecological Observatory Network
 """
 import pandas as pd
-
+import numpy as np
 
 def humidity_analyze(data):
     """
@@ -13,9 +13,8 @@ def humidity_analyze(data):
         data: Relative humidity dataframe, downloaded from neon_data_tools
 
     Returns:
-        necessary_data: a pandas series of the average
-        humidity over every day of a month with the month as the
-        row labels.
+        necessary_data: a numpy array of the average
+        humidity over every day of a month.
 
     """
     # Convert contents of "startDateTime" to a datetime object
@@ -25,7 +24,7 @@ def humidity_analyze(data):
     # Average the humidity for each month
     avg_humidity = data['RHMean'].resample('M').mean()
 
-    return avg_humidity
+    return np.array(avg_humidity)
 
 
 def precipitation_analyze(data):
@@ -37,9 +36,8 @@ def precipitation_analyze(data):
         data: Precipitation dataframe, downloaded from neon_data_tools
 
     Returns:
-        necessary_data: a pandas series of the average
-        precipitation over every day of a month with the month as the
-        row labels.
+        necessary_data: an array of the average
+        precipitation over every day of a month.
 
     """
     # Convert contents of "startDateTime" to a datetime object
@@ -53,7 +51,7 @@ def precipitation_analyze(data):
     precipitation = precipitation.resample('M').mean()
 
     # Return array with the month and average precipitation for each month
-    return precipitation
+    return np.array(precipitation)
 
 
 def tick_analyze(data):
@@ -63,8 +61,8 @@ def tick_analyze(data):
     Args:
         data: Ticks dataframe, downloaded from neon_data_tools
     Returns:
-        necessary_data: a pandas series with the total amount of tick
-        for a month and the month as the row labels.
+        necessary_data: a numpy array with the total amount of tick
+        for a month.
     """
     # Convert contents of "collectDate" to a datetime object
     data["collectDate"] = pd.to_datetime(data["collectDate"])
@@ -73,4 +71,4 @@ def tick_analyze(data):
     # Sum the ticks for the month
     sum_ticks = data['individualCount'].resample('M').sum()
 
-    return sum_ticks
+    return np.array(sum_ticks)
