@@ -160,3 +160,18 @@ def download_all_datasets(file_names, datasets, dpIDs, site, dates, package="bas
         file_paths = file_names[dataset]
         stacked_dataframes.append(create_stacked_dataframe(file_paths))
     return stacked_dataframes
+
+def get_dates():
+    dates = []
+    year = 2017
+    month = 4
+    for i in range(3):
+        dates.append([])
+        for j in range(5):
+            dates[i].append(f"{year}-0{month}")
+            month += 1
+            j += 1
+        year += 1
+        month = 4
+        i += 1
+    return dates
