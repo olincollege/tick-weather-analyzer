@@ -163,9 +163,9 @@ def get_dates(month_start, month_end, year_start, year_end):
     dates = []
     year = year_start
     month = month_start
-    for i in range(year_end - year_start):
+    for i in range(year_end - year_start + 1):
         dates.append([])
-        for j in range(month_end-month_start):
+        for j in range(month_end - month_start + 1):
             dates[i].append(f"{year}-0{month}")
             month += 1
             j += 1
