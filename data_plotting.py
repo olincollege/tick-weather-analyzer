@@ -111,9 +111,9 @@ def plot_line_chart(time, dependent_data, value):
 def plot_combined_line_graph(time, dependent_datasets, values):
     colors = ['r', 'c', 'g']
     for index, value in enumerate(values):
-        plt.plot(time, dependent_datasets[index], colors[index], label=value)
-    plt.title('Ticks, Relative Humidity, and Precipitation over time')
+        plt.plot(time, dependent_datasets[index], colors[index], label=values[index])
+    plt.title('Ticks , Relative Humidity, and Precipitation over time')
     plt.xlabel('Date')
-    plt.ylabel("")
+    plt.ylabel("Value")
     plt.legend()
     plt.show()
