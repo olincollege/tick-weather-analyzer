@@ -155,11 +155,24 @@ def download_all_datasets(file_names, datasets, dpIDs, site, dates, package="bas
         stacked_dataframes.append(create_stacked_dataframe(file_paths))
     return stacked_dataframes
 
-# Month start: 4
-# Month end: 8 
-# Year start: 2017
-
 def get_dates(month_start, month_end, year_start, year_end):
+    """
+    Generate a list of months over a range of year.
+
+    Args:
+        month_start: an integer represents the desired starting month to be included
+        month_end: an integer represents the desired last month to be included in one year
+        year_start: an integer represents the desired starting year to be included
+        year_end: an integer represents the last year to be included in the list
+
+    Returns:
+        dates: A list containing smaller lists of a range of desired months in
+            a year, the amount of lists corresponds to the desired amount of years
+    """
+    # Month start: 4
+    # Month end: 8 
+    # Year start: 2017
+
     dates = []
     year = year_start
     month = month_start
