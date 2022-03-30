@@ -1,15 +1,32 @@
 # tick-weather-analyzer
-* Precipitation: https://data.neonscience.org/data-products/DP1.00006.001
-* Relative Humidity: https://data.neonscience.org/data-products/DP1.00098.001
-* Barometric Pressure: https://data.neonscience.org/data-products/DP1.00004.001
-* Temperature Change: https://data.neonscience.org/data-products/DP2.00024.001
-* CO2 Concentration Rate of Change: https://data.neonscience.org/data-products/DP2.00008.001
-* Python NEON Utilities: https://gitlab.com/esrh/py-neonutils/-/tree/pypi
-* Ticks: https://data.neonscience.org/data-products/DP1.10093.001
-* NEON documentation: https://cran.r-project.org/web/packages/neonUtilities/neonUtilities.pdf
+## Description
 
-* Graph 1: Relative Humidity vs Tick Population (Line graph)
-* Graph 2: Barometric Pressure vs Tick Population (Line graph)
-* Graph 3: Precipiation vs Tick Population (Line graph)
-* Graph 4: Temperature Change vs Tick Population (Line graph)
-* Graph 5: Correlation Coefficients vs Relative Humiditiy, Barometric Pressure, Precipitation, Temperature Change (Bar Graph)
+This repository obtains data from the National Ecological Observatory Network, and uses said data to perform an analysis of the impact of relative humidity and precipitation on tick populations at the Harvard Forest & Quabbin Watershed, a NEON field site managed by Harvard University. In order to do so, the tick population, relative humidity, and precipitation data are accessed from NEON using an API.
+
+## Getting Started
+
+### Local Setup
+1. Clone the repository.
+    `git clone https://github.com/olincollege/tick-weather-analyzer.git`
+2. Navigate to the local repository using your terminal.
+    ex: `cd tick-weather-analyzer`
+3. Install the dependencies listed below if they are not already installed.
+
+### Dependencies
+This project relies upon the following dependencies:
+* Pandas
+    * `pip install pandas`
+* Matplotlib
+    * `pip install matplotlib`
+* NumPy
+    * `pip install numpy`
+* Requests
+    * `pip install requests`
+
+### Executing program
+In order to view the analysis of the datasets, the data must be downloaded in your local repository. In order to do so, simply run each cell of the Jupyter notebook in sequential order. Once you have downloaded the data, avoid running the third cell of the notebook as this will result in downloading a second copy of the data. Once downloaded, the data will appear in folders according to the name of the data product ID. The necessary files for each month for the given dataset will appear within each folder.
+* Run each cell in the Jupyter Notebook in sequential order.
+* To change the datasite or the date range, modify the values defined in the first cell of the notebook.
+
+### Authors
+Cherry Pham, Lili Baker, and Tara Lee
