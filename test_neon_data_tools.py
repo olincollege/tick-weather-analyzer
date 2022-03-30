@@ -9,13 +9,7 @@ from neon_data_tools import (
     get_dates,
 )
 
-# # Define sets of test cases.
-# create_stacked_dataframe_cases = [
-#     # test tick data
-#     ("D")
-# ]
-
-get_dates_cases = [
+GET_DATES_CASES = [
     # Same start/end month and start/end year
     ([1, 1, 2000, 2000], [['2000-01']]),
     # Range of months in same year
@@ -28,24 +22,15 @@ get_dates_cases = [
         ['2019-04', '2019-05', '2019-06', '2019-07', '2019-08']]),
 ]
 
-# Define standard testing functions to check functions' outputs given certain
-# inputs defined above.
-# @pytest.mark.parametrize("data,values", create_stacked_dataframe_cases)
-# def test_create_stacked_dataframe(data, values):
-#     """
-#     Test that perform_linear_regression returns expected values.
-#     Args:
-#         data: A list with the values being a list of the numpy arrays
-#             of the independent data and a numpy array of the dependent data.
-#         coefficients: A dictionary with the keys as the strings of the
-#             names of the independent datasets, and the values as the
-#             Pearson correlaction coefficients (r_value).
-#     """
-#     assert create_stacked_dataframe(data[0], data[1]) == values
-
-@pytest.mark.parametrize("data,values", get_dates_cases)
-def test_get_dates(data, values):
+@pytest.mark.parametrize("dates,dates_list", GET_DATES_CASES)
+def test_get_dates(dates, dates_list):
     """
-    """
-    assert get_dates(data[0], data[1], data[2], data[3]) == values
+    Check that the return value provides the range of desired dates
 
+    Args: 
+        dates: A list of desired values, corresponding to: starting month,
+            ending month, starting year, ending year for the dates list
+        dates_list: A list containing smaller lists of a range of desired months in
+            a year, the amount of lists corresponds to the desired amount of years
+    """
+    assert get_dates(dates[0], dates[1], dates[2], dates[3]) == dates_list
