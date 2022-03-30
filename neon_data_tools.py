@@ -11,7 +11,6 @@ NAME_OF_DESIRED_FILE = {
     "precipitation": "900.000.030.PRIPRE_30min"
 }
 
-
 def get_data_urls(dpID, site, date, package="basic"):
     """
     Return the urls and the names of the data for the dataset at the given month.
@@ -36,7 +35,6 @@ def get_data_urls(dpID, site, date, package="basic"):
     urls = [neon_data_json["data"]["files"][i]["url"] for i in range(len(neon_data_json["data"]["files"]))]
     names = [neon_data_json["data"]["files"][i]["name"][28:] for i in range(len(neon_data_json["data"]["files"]))]
     return urls, names
-
 
 def download_data(dataset, dpID, site, date, package="basic"): 
     """
@@ -73,7 +71,6 @@ def download_data(dataset, dpID, site, date, package="basic"):
     open(file_path, 'wb').write(requested_file.content)
     return file_name
 
-
 def get_file_names(file_names, dataset, dpID, site, date, package="basic"):
     """
     Download the desired data and add the file name to the dictionary of file names.
@@ -97,7 +94,6 @@ def get_file_names(file_names, dataset, dpID, site, date, package="basic"):
     file_names[dataset].append(f"{dpID}/{name}")
     return file_names
 
-
 def get_data_over_time(file_names, dataset, dpID, site, dates, package="basic"):
     """
     Download the desired data over a range of time.
@@ -117,7 +113,6 @@ def get_data_over_time(file_names, dataset, dpID, site, dates, package="basic"):
     for month in dates:
         get_file_names(file_names, dataset, dpID, site, month, package="basic")
 
-
 def create_stacked_dataframe(file_paths):
     """
     Combine the data for each dataset into one dataframe.
@@ -130,7 +125,6 @@ def create_stacked_dataframe(file_paths):
         A dataframe of the combines data for the dataset.
     """
     return pd.concat(map(pd.read_csv, [file_path for file_path in file_paths]), ignore_index = True)
-
 
 def download_all_datasets(file_names, datasets, dpIDs, site, dates, package="basic"):
     """
@@ -161,17 +155,21 @@ def download_all_datasets(file_names, datasets, dpIDs, site, dates, package="bas
         stacked_dataframes.append(create_stacked_dataframe(file_paths))
     return stacked_dataframes
 
-def get_dates():
+# Month start: 4
+# Month end: 9 
+# Year start: 2017
+
+def get_dates(month_start, month_end, year_start, year_end):
     dates = []
-    year = 2017
-    month = 4
-    for i in range(3):
+    year = year_start
+    month = month_start
+    for i in range(year_end - year_start):
         dates.append([])
-        for j in range(5):
+        for j in range(month_end-month_start):
             dates[i].append(f"{year}-0{month}")
             month += 1
             j += 1
         year += 1
-        month = 4
+        month = month_start
         i += 1
     return dates
