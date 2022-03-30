@@ -27,9 +27,9 @@ get_correlation_coefficients_cases = [
 
     # test correlations for all datasets
     ([['Humidity', 'Precipitation'],
-    [np.array([66.18246313, 71.42232345, 68.20874646, 73.4316989,  71.90363023]),
-    np.array([1.45133333, 4.53193548, 3.569, 1.76935484, 2.14483871])],
-    np.array([3, 45, 38, 53, 99])], {"Humidity": .736, "Precipitation": 0.05}),
+      [np.array([66.18246313, 71.42232345, 68.20874646, 73.4316989,  71.90363023]),
+     np.array([1.45133333, 4.53193548, 3.569, 1.76935484, 2.14483871])],
+        np.array([3, 45, 38, 53, 99])], {"Humidity": .736, "Precipitation": 0.05}),
 ]
 
 

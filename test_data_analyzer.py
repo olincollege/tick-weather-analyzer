@@ -2,7 +2,6 @@
 Test library functions to combine data for each dataset.
 """
 import pytest
-import neon_data_tools
 import pandas as pd
 import numpy as np
 
@@ -15,27 +14,33 @@ from data_analyzer import (
 # Define sets of test cases.
 humidity_analyze_cases = [
     # test simple case of one month
-    (pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40]], columns = ["startDateTime", 'RHMean']),[50]),
+    (pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40]],
+     columns=["startDateTime", 'RHMean']), [50]),
 
     # test that data is averaged at the month level, not the day level
-    (pd.DataFrame([["2017-04-01", 60], ["2017-04-01", 20], ["2017-04-02", 40]], columns = ["startDateTime", 'RHMean']),[40]),
+    (pd.DataFrame([["2017-04-01", 60], ["2017-04-01", 20],
+     ["2017-04-02", 40]], columns=["startDateTime", 'RHMean']), [40]),
 
 ]
 
 precipitation_analyze_cases = [
     # test simple case of one month
-    (pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40]], columns = ["startDateTime", 'priPrecipBulk']),[50]),
+    (pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40]],
+     columns=["startDateTime", 'priPrecipBulk']), [50]),
 
     # test that data is added for each day before being averaged on the month level
-    (pd.DataFrame([["2017-04-01", 60], ["2017-04-01", 10], ["2017-04-02", 40]], columns = ["startDateTime", 'priPrecipBulk']),[55]),
+    (pd.DataFrame([["2017-04-01", 60], ["2017-04-01", 10], ["2017-04-02", 40]],
+     columns=["startDateTime", 'priPrecipBulk']), [55]),
 ]
 
 tick_analyze_cases = [
     # test simple case of one month
-    (pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40]], columns = ["collectDate", 'individualCount']),[100]),
+    (pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40]],
+     columns=["collectDate", 'individualCount']), [100]),
 
     # test that data is added for each day and each month
-    (pd.DataFrame([["2017-04-01", 60], ["2017-04-01", 10], ["2017-04-02", 40]], columns = ["collectDate", 'individualCount']),[110]),
+    (pd.DataFrame([["2017-04-01", 60], ["2017-04-01", 10], ["2017-04-02", 40]],
+     columns=["collectDate", 'individualCount']), [110]),
 
 ]
 
@@ -53,6 +58,7 @@ def test_humidity_analyze(data, average_humidity):
     """
     assert humidity_analyze(data) == average_humidity
 
+
 @pytest.mark.parametrize("data,average_precipitation", precipitation_analyze_cases)
 def test_precipitation_analyze(data, average_precipitation):
     """
@@ -63,6 +69,7 @@ def test_precipitation_analyze(data, average_precipitation):
         average_precipitation: A numpy array with the respective average precipitation.
     """
     assert precipitation_analyze(data) == average_precipitation
+
 
 @pytest.mark.parametrize("data,sum_ticks", tick_analyze_cases)
 def test_tick_analyze(data, sum_ticks):
@@ -81,25 +88,31 @@ def test_humidity_analyze_multiple_months():
     """
     Test that humidity_analyze averages correctly over a month.
     """
-    data = pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40], ["2017-05-01", 30]], columns = ["startDateTime", 'RHMean'])
+    data = pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40],
+                        ["2017-05-01", 30]], columns=["startDateTime", 'RHMean'])
     average_humdidity = [50, 30]
 
     assert humidity_analyze(data).all() == np.array(average_humdidity).all()
+
 
 def test_precipitation_analyze_multiple_months():
     """
     Test that precipitation_analyze averages correctly over a month.
     """
-    data = pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40], ["2017-05-01", 30]], columns = ["startDateTime", 'priPrecipBulk'])
+    data = pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40],
+                        ["2017-05-01", 30]], columns=["startDateTime", 'priPrecipBulk'])
     average_precipitation = [50, 30]
 
-    assert precipitation_analyze(data).all() == np.array(average_precipitation).all()
+    assert precipitation_analyze(data).all() == np.array(
+        average_precipitation).all()
+
 
 def test_tick_analyze_multiple_months():
     """
     Test that tick_analyze averages correctly over a month.
     """
-    data = pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40], ["2017-05-01", 30]], columns = ["collectDate", 'individualCount'])
+    data = pd.DataFrame([["2017-04-01", 60], ["2017-04-02", 40],
+                        ["2017-05-01", 30]], columns=["collectDate", 'individualCount'])
     sum_ticks = [100, 30]
 
     assert tick_analyze(data).all() == np.array(sum_ticks).all()
