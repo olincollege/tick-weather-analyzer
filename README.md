@@ -24,7 +24,7 @@ This project relies upon the following dependencies:
     * `pip install requests`
 
 ### Executing program
-In order to view the analysis of the datasets, the data must be downloaded in your local repository. In order to do so, simply run each cell of the Jupyter notebook in sequential order. Once you have downloaded the data, avoid running the third cell of the notebook as this will result in downloading a second copy of the data. Once downloaded, the data will appear in folders according to the name of the data product ID. The necessary files for each month for the given dataset will appear within each folder.
+In order to view the analysis of the datasets, the data must be downloaded in your local repository. In order to do so, simply run each cell of the Jupyter notebook in sequential order. Once downloaded, the data will appear in folders according to the name of the data product ID. The necessary file for each month for the given dataset will appear within each folder.
 * Run each cell in the Jupyter Notebook in sequential order.
 * To change the datasite or the date range, modify the values defined in the first cell of the notebook.
 
