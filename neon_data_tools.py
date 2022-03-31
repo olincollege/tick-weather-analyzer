@@ -195,9 +195,6 @@ def get_dates(month_start, month_end, year_start, year_end):
         dates: A list containing smaller lists of a range of desired months in
             a year, the amount of lists corresponds to the desired amount of years
     """
-    # Month start: 4
-    # Month end: 8
-    # Year start: 2017
 
     dates = []
     year = year_start
