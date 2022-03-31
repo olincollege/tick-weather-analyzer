@@ -199,7 +199,10 @@ def get_dates(month_start, month_end, year_start, year_end):
     for i in range(year_end - year_start + 1):
         dates.append([])
         for j in range(month_end - month_start + 1):
-            dates[i].append(f"{year}-0{month}")
+            if month < 10:
+                dates[i].append(f"{year}-0{month}")
+            else:
+                dates[i].append(f"{year}-{month}")
             month += 1
             j += 1
         year += 1
