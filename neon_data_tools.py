@@ -30,10 +30,16 @@ def get_data_urls(dp_id, site, date):
         names: A list of strings containing the names of the files found at each
             of the aforementioned urls.
     """
+    # define the base url for the request
     base_url = "http://data.neonscience.org/api/v0/data/"
+
+    # make a request at the url that follows the NEON data retrieval format
     neon_data = requests.get(base_url + dp_id + "/" +
                              site + "/" + date + "?package=basic")
+    # convert the data into JSON
     neon_data_json = neon_data.json()
+
+    # only save the urls and the names of the files
     urls = [neon_data_json["data"]["files"][i]["url"]
             for i in range(len(neon_data_json["data"]["files"]))]
     names = [neon_data_json["data"]["files"][i]["name"][28:]

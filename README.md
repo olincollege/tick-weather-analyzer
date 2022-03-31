@@ -28,5 +28,8 @@ In order to view the analysis of the datasets, the data must be downloaded in yo
 * Run each cell in the Jupyter Notebook in sequential order.
 * To change the datasite or the date range, modify the values defined in the first cell of the notebook.
 
+### Notes on Data Collection
+The program makes two requests for each month for each dataset. The first request gets the names and urls of the files pertaining to that month. A second request is made to download only the data from the urls associated with the desired file names. This reduces the number of files needed to be downloaded.
+
 ### Authors
 Cherry Pham, Lili Baker, and Tara Lee
